@@ -17,6 +17,10 @@ export default function App() {
   const [errors, setErrors] = useState({})
   // Form submission success state
   const [isSubmitted, setIsSubmitted] = useState(false)
+  // Form submission loading state
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  // Form submission error state
+  const [submitError, setSubmitError] = useState('')
 
   // Track scroll position to update header styling
   useEffect(() => {
@@ -84,14 +88,29 @@ export default function App() {
   }
 
   // Handle Form Submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const validationErrors = validateForm()
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
-    } else {
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitError('')
+
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbxcyFCZ20VdAJo8A7UwNALnDavcHqornWwXZVuSmT2u1arR1tlCaMb5sEOWGlZ2lxea/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+        body: JSON.stringify(formData)
+      })
+
+      // Assuming success since no exception was thrown
       setIsSubmitted(true)
-      // Reset form fields
       setFormData({
         name: '',
         phone: '',
@@ -99,10 +118,15 @@ export default function App() {
         subject: '',
         message: ''
       })
-      // Clear success banner after 5 seconds
+      // Clear success banner after 8 seconds
       setTimeout(() => {
         setIsSubmitted(false)
       }, 8000)
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitError('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง หรือติดต่อเราโดยตรง')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -540,6 +564,12 @@ export default function App() {
                 </div>
               )}
 
+              {submitError && (
+                <div className="form-success-box" style={{backgroundColor: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', color: '#ef4444'}}>
+                  ❌ {submitError}
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} noValidate>
                 <div className="form-grid">
                   {/* Name */}
@@ -617,8 +647,8 @@ export default function App() {
                   </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-submit">
-                  ส่งข้อความ
+                <button type="submit" className="btn btn-primary btn-submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'กำลังส่งข้อมูล...' : 'ส่งข้อความ'}
                 </button>
               </form>
             </div>
