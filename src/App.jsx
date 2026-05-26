@@ -237,7 +237,7 @@ export default function App() {
           {/* RIGHT SIDE: LAWYER PHOTO WITH BADGE */}
           <div className="hero-lawyer-container">
             <div className="hero-lawyer-image-wrapper">
-              <img src="/lawyer.jpg" alt="ทนายบุญฤทธิ์" className="hero-lawyer-image" />
+              <img src="/lawyer.png" alt="ทนายบุญฤทธิ์" className="hero-lawyer-image" />
               <div className="hero-lawyer-overlay-badge">
                 <h3 className="badge-name">ทนายบุญฤทธิ์</h3>
                 <p className="badge-title">ทนายความ / หัวหน้าสำนักงาน</p>
