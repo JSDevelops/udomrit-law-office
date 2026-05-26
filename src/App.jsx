@@ -108,7 +108,29 @@ export default function App() {
 
   return (
     <div className="app-wrapper">
-      {/* HEADER / NAVIGATION */}
+      {/* TOP HEADER BAR */}
+      <div className="top-header-bar">
+        <div className="container top-bar-container">
+          <div className="top-bar-left">
+            <span className="top-bar-item">
+              <span className="icon">📞</span> 087-552-2630 (ทนายฤทธิ์)
+            </span>
+            <span className="top-bar-separator">|</span>
+            <span className="top-bar-item">
+              <span className="icon">✉️</span> boonyalit_108@hotmail.com
+            </span>
+          </div>
+          <div className="top-bar-right">
+            <div className="lang-selector">
+              <button className="lang-btn lang-btn--active">TH</button>
+              <button className="lang-btn">EN</button>
+              <button className="lang-btn">中文</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* MAIN HEADER / NAVIGATION */}
       <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
         <div className="container nav-container">
           <a href="#" className="logo" onClick={(e) => handleNavLinkClick(e, 'hero')}>
@@ -119,6 +141,7 @@ export default function App() {
             <div className="logo-text">
               <span className="logo-title">สำนักกฎหมายอุดมฤทธิ์</span>
               <span className="logo-subtitle">UDOMRIT LAW OFFICE</span>
+              <span className="logo-chinese">乌隆律师事务所</span>
             </div>
           </a>
 
@@ -129,17 +152,23 @@ export default function App() {
                 <a href="#hero" className="nav-link" onClick={(e) => handleNavLinkClick(e, 'hero')}>หน้าแรก</a>
               </li>
               <li>
+                <a href="#about" className="nav-link" onClick={(e) => handleNavLinkClick(e, 'about')}>เกี่ยวกับเรา</a>
+              </li>
+              <li>
                 <a href="#services" className="nav-link" onClick={(e) => handleNavLinkClick(e, 'services')}>บริการของเรา</a>
               </li>
               <li>
-                <a href="#about" className="nav-link" onClick={(e) => handleNavLinkClick(e, 'about')}>เกี่ยวกับเรา</a>
+                <a href="#about" className="nav-link" onClick={(e) => handleNavLinkClick(e, 'about')}>บทความกฎหมาย</a>
+              </li>
+              <li>
+                <a href="#about" className="nav-link" onClick={(e) => handleNavLinkClick(e, 'about')}>รีวิวลูกความ</a>
               </li>
               <li>
                 <a href="#contact" className="nav-link" onClick={(e) => handleNavLinkClick(e, 'contact')}>ติดต่อเรา</a>
               </li>
             </ul>
-            <a href="tel:087-552-2630" className="btn-contact-nav">
-              📞 โทรปรึกษาด่วน
+            <a href="#contact" className="btn-contact-nav" onClick={(e) => handleNavLinkClick(e, 'contact')}>
+              ⚖️ ปรึกษากฎหมาย
             </a>
           </div>
 
@@ -156,102 +185,187 @@ export default function App() {
       <section id="hero" className="hero">
         <div className="container hero-grid">
           <div className="hero-content">
-            <span className="hero-badge">Professional & Integrity</span>
             <h1 className="hero-title">สำนักกฎหมายอุดมฤทธิ์</h1>
+            <h2 className="hero-english-title">UDOMRIT LAW OFFICE</h2>
+            <h3 className="hero-chinese-title">乌隆律师事务所</h3>
+            
             <p className="hero-desc">
-              ทนายความหลังสวน จังหวัดชุมพร บริการปรึกษาข้อกฎหมาย และรับว่าความทั่วราชอาณาจักร 
-              ด้วยประสบการณ์ด้านอรรถคดีที่มุ่งมั่นในความเป็นธรรมและประโยชน์สูงสุดของลูกความ 
-              คดีแพ่ง คดีอาญา คดีประกันภัย
+              ให้คำปรึกษากฎหมาย รับว่าความทั่วราชอาณาจักร<br/>
+              ดำเนินคดี ฟ้องร้อง เรียกทรัพย์ และร่างสัญญา โดยทีมงานมืออาชีพ
             </p>
-            <div className="hero-cta">
-              <a href="tel:087-552-2630" className="btn btn-primary">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.56 11.56 0 0 1 8.82 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/>
-                </svg>
-                โทร: 087-552-2630
-              </a>
-              <a href="#contact" className="btn btn-secondary" onClick={(e) => handleNavLinkClick(e, 'contact')}>
-                ปรึกษาทางข้อความ
-              </a>
+            
+            {/* Key highlights grid */}
+            <div className="hero-highlights">
+              <div className="hero-highlight-card">
+                <div className="highlight-icon-box">
+                  <svg className="highlight-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+                  </svg>
+                </div>
+                <div className="highlight-text">
+                  <span className="highlight-title">รับว่าความ</span>
+                  <span className="highlight-desc">ทั่วราชอาณาจักร</span>
+                </div>
+              </div>
+
+              <div className="hero-highlight-card">
+                <div className="highlight-icon-box">
+                  <svg className="highlight-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 21h-2v-2h2v2zm-4-2H5c-1.1 0-2-.9-2-2v-1c0-.55.45-1 1-1h1c0-2.21 1.79-4 4-4v-1.17c-.59-.34-1-.98-1-1.71 0-1.1.9-2 2-2s2 .9 2 2c0 .73-.41 1.37-1 1.71V11c2.21 0 4 1.79 4 4h1c.55 0 1 .45 1 1v1c0 1.1-.9 2-2 2zM6.82 15h6.36C12.63 13.82 11.41 13 10 13s-2.63.82-3.18 2zM12 5.5c0-.28-.22-.5-.5-.5s-.5.22-.5.5.22.5.5.5.5-.22.5-.5z"/>
+                  </svg>
+                </div>
+                <div className="highlight-text">
+                  <span className="highlight-title">ดำเนินคดี</span>
+                  <span className="highlight-desc">ฟ้องร้อง เรียกทรัพย์</span>
+                </div>
+              </div>
+
+              <div className="hero-highlight-card">
+                <div className="highlight-icon-box">
+                  <svg className="highlight-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                  </svg>
+                </div>
+                <div className="highlight-text">
+                  <span className="highlight-title">ร่างสัญญา</span>
+                  <span className="highlight-desc">และเอกสารกฎหมาย</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="hero-graphic">
-            <div className="hero-scale-card">
-              {/* Scale Icon inside card */}
-              <svg className="hero-scale-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2A2 2 0 0 0 10 4V6H3C1.9 6 1 6.9 1 8V10C1 11.1 1.9 12 3 12H4.2C5.1 14.3 7.3 16 10 16V19H8C6.9 19 6 19.9 6 21H18C18 19.9 17.1 19 16 19H14V16C16.7 16 18.9 14.3 19.8 12H21C22.1 12 23 11.1 23 10V8C23 6.9 22.1 6 21 6H14V4A2 2 0 0 0 12 2M3 8H10V10H3V8M14 8H21V10H14V8M12 11.5A1.5 1.5 0 0 1 13.5 13A1.5 1.5 0 0 1 12 14.5A1.5 1.5 0 0 1 10.5 13A1.5 1.5 0 0 1 12 11.5Z"/>
-              </svg>
-              <h3 className="hero-scale-title">ความเที่ยงธรรม</h3>
-              <p className="hero-scale-subtitle">Justice & Honor</p>
+          {/* RIGHT SIDE: LAWYER PHOTO WITH BADGE */}
+          <div className="hero-lawyer-container">
+            <div className="hero-lawyer-image-wrapper">
+              <img src="/lawyer.jpg" alt="ทนายบุญฤทธิ์" className="hero-lawyer-image" />
+              <div className="hero-lawyer-overlay-badge">
+                <h3 className="badge-name">ทนายบุญฤทธิ์</h3>
+                <p className="badge-title">ทนายความ / หัวหน้าสำนักงาน</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SERVICES SECTION */}
-      <section id="services" className="section">
+      {/* QUICK CONTACT BAR SECTION */}
+      <section className="quick-contact-section">
         <div className="container">
-          <div className="section-title">
-            <span className="text-gold display-font" style={{letterSpacing:'2px', display:'block', marginBottom:'0.5rem', fontSize:'0.9rem', fontWeight:'600'}}>OUR PRACTICE</span>
-            <h2>ขอบเขตงานบริการกฎหมาย</h2>
+          <div className="quick-contact-bar">
+            {/* Phone */}
+            <div className="quick-contact-item">
+              <div className="quick-contact-icon-wrapper">📞</div>
+              <div className="quick-contact-info">
+                <span className="quick-contact-label">โทรศัพท์</span>
+                <span className="quick-contact-value">
+                  <a href="tel:087-552-2630">087-552-2630</a><br/>
+                  <span className="quick-contact-sub">(ทนายฤทธิ์)</span>
+                </span>
+              </div>
+            </div>
+            
+            {/* Email */}
+            <div className="quick-contact-item">
+              <div className="quick-contact-icon-wrapper">✉️</div>
+              <div className="quick-contact-info">
+                <span className="quick-contact-label">อีเมล</span>
+                <span className="quick-contact-value">
+                  <a href="mailto:boonyalit_108@hotmail.com">boonyalit_108@hotmail.com</a>
+                </span>
+              </div>
+            </div>
+            
+            {/* Address */}
+            <div className="quick-contact-item">
+              <div className="quick-contact-icon-wrapper">📍</div>
+              <div className="quick-contact-info">
+                <span className="quick-contact-label">ที่ตั้งสำนักงาน</span>
+                <span className="quick-contact-value">
+                  หมู่ 7 ต.ขันเงิน อ.หลังสวน<br/>
+                  จ.ชุมพร 86110
+                </span>
+              </div>
+            </div>
+            
+            {/* Hours */}
+            <div className="quick-contact-item">
+              <div className="quick-contact-icon-wrapper">🕒</div>
+              <div className="quick-contact-info">
+                <span className="quick-contact-label">เวลาทำการ</span>
+                <span className="quick-contact-value">ทุกวัน 08.30 - 18.00 น.</span>
+              </div>
+            </div>
+            
+            {/* LINE CTA Button */}
+            <a href="https://line.me/ti/p/~@udomrit.law" target="_blank" rel="noopener noreferrer" className="btn-line">
+              <div className="line-icon-box">
+                {/* SVG LINE Icon */}
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d="M24 10.3c0-4.8-5.4-8.8-12-8.8S0 5.5 0 10.3c0 4.3 4.3 7.9 10.1 8.7.4.1.9.3 1 .7.1.3.1.8 0 1.2l-.4 2.2c-.1.5-.4 2 .4 1.4.8-.6 4.3-5.1 5.9-7.1 4.3-1.2 7-4 7-6.4zM7.5 13.5H5.8c-.3 0-.5-.2-.5-.5V8.1c0-.3.2-.5.5-.5h.6c.3 0 .5.2.5.5v4.3h.6c.3 0 .5.2.5.5v.6c0 .3-.2.5-.5.5zm2.7 0H9.6c-.3 0-.5-.2-.5-.5V8.1c0-.3.2-.5.5-.5h.6c.3 0 .5.2.5.5v4.9c0 .3-.2.5-.5.5zm7.3 0h-2.9c-.3 0-.5-.2-.5-.5V8.1c0-.3.2-.5.5-.5h2.9c.3 0 .5.2.5.5v.6c0 .3-.2.5-.5.5h-2.3v1.1h1.7c.3 0 .5.2.5.5v.6c0 .3-.2.5-.5.5h-1.7v1.2h2.3c.3 0 .5.2.5.5v.6c0 .3-.2.5-.5.5zm-3.3 0h-.6c-.2 0-.3-.1-.4-.2L11 9.7v3.3c0 .3-.2.5-.5.5h-.6c-.3 0-.5-.2-.5-.5V8.1c0-.3.2-.5.5-.5h.6c.2 0 .3.1.4.2l2.3 3.5V8.1c0-.3.2-.5.5-.5h.6c.3 0 .5.2.5.5v4.9c0 .3-.2.5-.5.5z"/>
+                </svg>
+              </div>
+              <div className="line-content">
+                <span className="line-title">ปรึกษาทาง LINE</span>
+                <span className="line-handle">@udomrit.law</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES SECTION */}
+      <section id="services" className="section services-section">
+        <div className="container services-container">
+          <div className="services-left">
+            <h2 className="services-main-title">บริการของเรา</h2>
+            <p className="services-main-desc">
+              บริการด้านกฎหมายครบวงจร โดยทีมงานมืออาชีพ
+            </p>
+            <a href="#contact" className="btn btn-secondary btn-all-services" onClick={(e) => handleNavLinkClick(e, 'contact')}>
+              ดูบริการทั้งหมด
+            </a>
           </div>
 
-          <div className="services-grid">
-            {/* Service 1: Civil Law */}
-            <div className="service-card">
-              <div className="service-icon-box">
-                <svg className="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
-                </svg>
+          <div className="services-right">
+            <div className="services-grid">
+              {/* Card 1: Civil Law */}
+              <div className="service-card" onClick={(e) => handleNavLinkClick(e, 'contact')}>
+                <div className="service-icon-box">
+                  <svg className="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C11.45 2 11 2.45 11 3V4.07C7.61 4.53 5 7.46 5 11C5 11.28 5.02 11.55 5.06 11.82L2.09 13.8C1.88 13.94 1.79 14.2 1.89 14.42L2.83 16.5C2.94 16.72 3.2 16.81 3.42 16.7L6.39 14.73C7.54 16.14 9.29 17 11 17.07V19H9C8.45 19 8 19.45 8 20C8 20.55 8.45 21 9 21H15C15.55 21 16 20.55 16 20C16 19.45 15.55 19 15 19H13V17.07C14.71 17 16.46 16.14 17.61 14.73L20.58 16.7C20.8 16.81 21.06 16.72 21.17 16.5L22.11 14.42C22.21 14.2 22.12 13.94 21.91 13.8L18.94 11.82C18.98 11.55 19 11.28 19 11C19 7.46 16.39 4.53 13 4.07V3C13 2.45 12.55 2 12 2M12 6C14.4 6 16.38 7.72 16.89 10H7.11C7.62 7.72 9.6 6 12 6M6.33 11.83C6.39 12.35 6.78 12.77 7.3 12.83C7.82 12.89 8.29 12.57 8.35 12.05C8.41 11.53 8.02 11.11 7.5 11.05C6.98 10.99 6.51 11.31 6.45 11.83M17.55 11.83C17.61 12.35 18.08 12.67 18.6 12.61C19.12 12.55 19.51 12.07 19.45 11.55C19.39 11.03 18.92 10.71 18.4 10.77C17.88 10.83 17.49 11.31 17.55 11.83Z"/>
+                  </svg>
+                </div>
+                <h3 className="service-title">คดีแพ่ง</h3>
               </div>
-              <h3 className="service-title">คดีแพ่งและพาณิชย์</h3>
-              <p className="service-desc">
-                ว่าความและแก้ต่างคดีครอบครัว มรดก ที่ดิน สัญญาจะซื้อจะขาย ผิดสัญญาซื้อขาย กู้ยืมเงิน 
-                คดีผู้บริโภค ละเมิด ตลอดจนเรียกร้องสิทธิตามกฎหมายแพ่งทุกประเภท
-              </p>
-            </div>
 
-            {/* Service 2: Criminal Law */}
-            <div className="service-card">
-              <div className="service-icon-box">
-                <svg className="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 12c-2.7 0-5.8 1.28-6 2v1h12v-1c-.2-.72-3.3-2-6-2z"/>
-                </svg>
+              {/* Card 2: Criminal Law */}
+              <div className="service-card" onClick={(e) => handleNavLinkClick(e, 'contact')}>
+                <div className="service-icon-box">
+                  <svg className="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 21h-2v-2h2v2zm-4-2H5c-1.1 0-2-.9-2-2v-1c0-.55.45-1 1-1h1c0-2.21 1.79-4 4-4v-1.17c-.59-.34-1-.98-1-1.71 0-1.1.9-2 2-2s2 .9 2 2c0 .73-.41 1.37-1 1.71V11c2.21 0 4 1.79 4 4h1c.55 0 1 .45 1 1v1c0 1.1-.9 2-2 2zM6.82 15h6.36C12.63 13.82 11.41 13 10 13s-2.63.82-3.18 2zM12 5.5c0-.28-.22-.5-.5-.5s-.5.22-.5.5.22.5.5.5.5-.22.5-.5z"/>
+                  </svg>
+                </div>
+                <h3 className="service-title">คดีอาญา</h3>
               </div>
-              <h3 className="service-title">คดีอาญา</h3>
-              <p className="service-desc">
-                แก้ต่างต่อสู้คดีและเป็นทนายโจทก์ฟ้องคดีอาญา ยื่นคำฟ้อง คำให้การ ประกันตัวผู้ต้องหา/จำเลย 
-                คดีลักทรัพย์ ยักยอก ฉ้อโกง บุกรุก ทำร้ายร่างกาย และคดีตาม พ.ร.บ. ต่างๆ ทั่วประเทศ
-              </p>
-            </div>
 
-            {/* Service 3: Insurance Law */}
-            <div className="service-card">
-              <div className="service-icon-box">
-                <svg className="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-                </svg>
+              {/* Card 3: Contracts */}
+              <div className="service-card" onClick={(e) => handleNavLinkClick(e, 'contact')}>
+                <div className="service-icon-box">
+                  <svg className="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                  </svg>
+                </div>
+                <h3 className="service-title">ร่างสัญญา</h3>
               </div>
-              <h3 className="service-title">คดีประกันภัย</h3>
-              <p className="service-desc">
-                เรียกร้องค่าเสียหาย ค่าสินไหมทดแทนจากบริษัทประกันภัย กรณีอุบัติเหตุทางรถยนต์ 
-                การบาดเจ็บ ทุพพลภาพ หรือเสียชีวิต เพื่อพิทักษ์สิทธิประโยชน์สูงสุดตามกฎหมายประกันภัย
-              </p>
-            </div>
 
-            {/* Service 4: Legal Advisor */}
-            <div className="service-card">
-              <div className="service-icon-box">
-                <svg className="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 15c0-4.62-3.5-8.44-8-8.9V5h3V3h-3V1h-2v2H8v2h3v1.1C6.5 6.56 3 10.38 3 15H1v2h2v4h18v-4h2v-2h-2zM5 15c0-3.87 3.13-7 7-7s7 3.13 7 7H5z"/>
-                </svg>
+              {/* Card 4: Legal Advisor */}
+              <div className="service-card" onClick={(e) => handleNavLinkClick(e, 'contact')}>
+                <div className="service-icon-box">
+                  <svg className="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+                <h3 className="service-title">ที่ปรึกษากฎหมาย</h3>
               </div>
-              <h3 className="service-title">ปรึกษาและร่างนิติกรรม</h3>
-              <p className="service-desc">
-                ให้คำปรึกษาปัญหาข้อกฎหมายทั่วไป ตรวจสอบและร่างสัญญาทางธุรกิจ สัญญากู้ยืม สัญญาซื้อขาย 
-                หนังสือมอบอำนาจ และพินัยกรรมอย่างรัดกุม ป้องกันการเกิดข้อพิพาทในอนาคต
-              </p>
             </div>
           </div>
         </div>
